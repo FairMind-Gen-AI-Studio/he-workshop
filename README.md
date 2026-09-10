@@ -41,7 +41,7 @@ python3 -c 'import yaml; print("pyyaml ok")'
 
 | Cartella | Lab | Cosa contiene |
 |---|---|---|
-| `kit/` | 1 | La matrice 5x4 da stampare, i fogli degli esercizi, il CLAUDE.md gonfio del Lab 2 |
+| `kit/` | 1 | La matrice 5x4 da stampare, i fogli degli esercizi, e in `kit/lab2/` il CLAUDE.md gonfio |
 | `code/ch04/` | 2 | Un contratto di repository vero: CLAUDE.md, rules, tre skill, il livello annidato in `services/api/` |
 | `code/ch05/` | 3 | La base personale di deny, il devcontainer con firewall in uscita, l'allowlist dei domini |
 | `code/ch06/` | 4 | Otto hook: il gate classifier, la blocklist di contrasto, l'orchestratore Stop, il log dei comandi |
@@ -70,12 +70,22 @@ Chi ha un repository proprio sotto mano può usarlo al posto del campione.
 ### Lab 2: Un contratto che cambia comportamento (30')
 
 ```bash
-cd code/ch04
+cd kit/lab2      # qui dentro c'è il CLAUDE.md gonfio, 191 righe
+claude
 ```
 
-Applicate `prompts/audit-claude-md.txt` a `kit/claude-md-gonfio.md`, 191 righe.
-Tagliate riga per riga con il test del repository: se il repository sa dirlo da
-solo, esce. Poi scrivete la definition of done nel contratto e cablate
+Incollate `code/ch04/prompts/audit-claude-md.txt`. Il prompt dice "Read
+CLAUDE.md" e in questa cartella quel file è il gonfio, quindi gira senza
+adattamenti. Tagliate riga per riga con il test del repository: se il repository
+sa dirlo da solo, esce. La metrica è righe rimaste su 191.
+
+Poi passate al contratto vero:
+
+```bash
+cd ../../code/ch04
+```
+
+Scrivete la definition of done nel contratto e cablate
 `.claude/skills/verify-done/SKILL.md`. Infine aggiungete un livello annidato in
 `services/api/CLAUDE.md` e scrivete su carta chi vince **prima** di provarlo.
 
@@ -144,10 +154,6 @@ bash evals/run.sh score \
 Aggiungete tre righe `oversize` ai prediction e verificate che il pass rate resti
 invariato. Poi scrivete un task YAML nuovo per una regola del vostro harness, e
 chi arriva in fondo lo fa girare.
-
-## Le soluzioni
-
-Stanno sul branch `docente`, non su questo.
 
 ## Licenza
 
