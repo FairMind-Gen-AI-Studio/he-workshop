@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "fairmind-studio": {
+      "type": "http",
+      "url": "https://mcp.fairmind.example/studio"
+    },
+    "aws": {
+      "command": "uvx",
+      "args": ["awslabs.aws-api-mcp-server@latest"]
+    }
+  }
+}

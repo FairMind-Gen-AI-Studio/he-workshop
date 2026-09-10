@@ -1,0 +1,8 @@
+Read CLAUDE.md. For each line, answer three questions.
+1. If you ignored this line, what would it cost: something
+   unacceptable (money, data, production) or something recoverable?
+2. Does every session need it, or only work on certain paths?
+3. Could you have worked it out from the code alone?
+Return a table with one row per line and a verdict for each:
+keep, move to a rule, move to a skill, become a hook, delete.
+Change nothing yet.

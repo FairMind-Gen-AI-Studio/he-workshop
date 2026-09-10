@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(~/.aws/**)",
+      "Read(~/.ssh/**)",
+      "Read(**/.env)",
+      "Bash(git push --force *)"
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "network": { "tlsTerminate": {} },
+    "credentials": {
+      "files": [{ "path": "~/.aws/credentials", "mode": "deny" }],
+      "envVars": [
+        { "name": "AWS_SECRET_ACCESS_KEY", "mode": "deny" },
+        { "name": "GH_TOKEN", "mode": "mask", "injectHosts": ["api.github.com"] }
+      ]
+    }
+  }
+}

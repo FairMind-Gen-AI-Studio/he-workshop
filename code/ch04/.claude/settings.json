@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)"
+    ],
+    "ask": [
+      "Bash(rm *)"
+    ]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {"hooks": [{"type": "command",
+                  "command": "bash ./scripts/update-clickup-start.sh"}]}
+    ],
+    "Stop": [
+      {"hooks": [{"type": "command",
+                  "command": "bash ./scripts/update-clickup-end.sh"}]}
+    ]
+  }
+}

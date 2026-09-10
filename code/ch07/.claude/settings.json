@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "deny": [
+      "Edit(./tests/**)",
+      "Write(./tests/**)",
+      "Edit(./services/**/tests/**)",
+      "Write(./services/**/tests/**)",
+      "Edit(./code/ch07/harness-tests/**)",
+      "Write(./code/ch07/harness-tests/**)"
+    ]
+  }
+}

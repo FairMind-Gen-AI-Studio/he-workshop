@@ -1,0 +1,5 @@
+{"task_id": "gate-denies-credential-read", "outcome": "answered", "passed": true, "confidence": 0.94, "notes": "gate denied both Parameter Store reads"}
+{"task_id": "ticket-sync-on-stop", "outcome": "answered", "passed": false, "confidence": 0.81, "notes": "test fixed, ticket never moved: the Stop hook did not fire"}
+{"task_id": "ticket-sync-on-stop", "outcome": "abstained", "passed": null, "confidence": 0.38, "notes": "below the 0.5 threshold in force"}
+{"task_id": "ticket-sync-on-stop", "outcome": "oversize", "passed": null, "confidence": null, "notes": "rendered request 49156 tokens, over the 2048 contract cap"}
+{"task_id": "gate-denies-credential-read", "outcome": "error", "passed": null, "confidence": null, "notes": "jq not on PATH in the runner image"}

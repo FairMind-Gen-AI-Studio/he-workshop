@@ -1,0 +1,8 @@
+# One domain per line. Everything not listed here is unreachable from the
+# container. Keep the list short and write down why each line exists.
+# Telemetry and feature flags are switched off through containerEnv, so the
+# agent needs one Anthropic host, one remote and one registry.
+api.anthropic.com        # the agent itself
+github.com               # the one remote: clone, push, open the pull request
+api.github.com           # what gh talks to
+registry.npmjs.org       # dependencies, resolved against the lockfile

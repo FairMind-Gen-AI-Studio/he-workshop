@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "ask": ["Bash(git push *)", "Bash(aws *)", "Bash(kubectl apply *)"],
+    "deny": ["Bash(curl *)", "Bash(wget *)", "mcp__aws__*"]
+  },
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "allowUnsandboxedCommands": false,
+    "network": {
+      "allowedDomains": ["api.github.com", "github.com", "registry.npmjs.org"]
+    }
+  },
+  "enabledMcpjsonServers": ["fairmind-studio"],
+  "disabledMcpjsonServers": ["aws"]
+}

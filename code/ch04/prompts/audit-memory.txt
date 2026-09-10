@@ -1,0 +1,5 @@
+Read every file in your memory directory for this project.
+For each entry answer three questions: is it still true, is it
+still useful and would I be surprised to find you acting on it?
+Propose corrections and deletions as a list. Change nothing
+until I approve.
