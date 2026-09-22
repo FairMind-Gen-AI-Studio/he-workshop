@@ -155,21 +155,28 @@ passed. Without `CLICKUP_TOKEN` the ticket step exits quietly.
 Hooks registered on the same event run in parallel, with no ordering. That is
 why `on-stop.sh` is a single hook that sequences its steps inside itself.
 
-1. Install two sibling `Stop` hooks, "format" and "gate", where the gate
+1. Put the project back to green first, or the Stop gate will block every
+   turn of this step:
+
+   ```bash
+   git checkout -- test src
+   ```
+
+2. Install two sibling `Stop` hooks, "format" and "gate", where the gate
    expects the format step to be finished. They only write to a log:
 
    ```bash
    cp ../../kit/lab4/sibling-stop-hooks.json .claude/settings.local.json
    ```
 
-2. Run a few turns:
+3. Run a few turns:
 
    ```bash
    for i in 1 2 3; do claude -p "Reply with the word ok." > /dev/null; done
    cat .claude/logs/stop-order.log
    ```
 
-3. Read the order. You will see lines like:
+4. Read the order. You will see lines like:
 
    ```text
    gate: start (expects format to be finished)

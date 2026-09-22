@@ -38,7 +38,7 @@ copying over it loses your configuration.
    jq -s -f kit/lab3/merge-settings.jq \
      ~/.claude/settings.json code/ch05/user-floor.settings.json \
      > /tmp/settings.merged.json
-   diff ~/.claude/settings.json /tmp/settings.merged.json
+   diff <(jq -S . ~/.claude/settings.json) <(jq -S . /tmp/settings.merged.json)
    ```
 
    Read the diff. You should see only additions: four `deny` rules and a
