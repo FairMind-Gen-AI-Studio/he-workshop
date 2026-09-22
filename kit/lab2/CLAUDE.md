@@ -1,7 +1,7 @@
 # Fairmind Studio
 
-> Materiale didattico per il Lab 2a. Questo file va tagliato, non copiato.
-> Contiene circa 20 righe che valgono e oltre 170 che il repository sa dire da solo.
+> Teaching material for Lab 2. Cut this file, do not copy it.
+> It holds about 20 lines worth keeping and more than 170 the repository can say for itself.
 
 Welcome to the Fairmind Studio codebase! This document provides a comprehensive
 overview of our project architecture, conventions, and development workflow. It

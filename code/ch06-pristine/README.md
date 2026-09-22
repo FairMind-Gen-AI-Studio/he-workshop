@@ -18,6 +18,10 @@ Copy the pieces you need; every script is self-contained.
 | `scripts/update-clickup-end.sh` | called by `on-stop.sh` | Post-action invariant with failure visibility: ticket update that reports its own failure instead of vanishing, and runs only after the gate has passed |
 | `.claude/settings.json` | | Wires all of the above, plus a ConfigChange audit log and deny rules protecting the hooks themselves |
 
+`package.json`, `src/` and `test/` are a minimal project with no
+dependencies, so that `stop-gate.sh` has a real `pnpm test`, `pnpm typecheck`
+and `pnpm lint` to run. Break `test/sum.test.js` to watch the gate block.
+
 `scripts/update-clickup-start.sh` is unchanged from `code/ch04/scripts/`
 and is referenced by the settings file for completeness.
 

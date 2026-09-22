@@ -1,0 +1,10 @@
+{
+  "name": "lab4-sample",
+  "private": true,
+  "description": "A minimal project for stop-gate.sh to run its checks against",
+  "scripts": {
+    "test": "node --test",
+    "typecheck": "node --check src/sum.js",
+    "lint": "node --check test/sum.test.js"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'L=\"$CLAUDE_PROJECT_DIR/.claude/logs/stop-order.log\"; mkdir -p \"$(dirname \"$L\")\"; echo \"format: start\" >> \"$L\"; sleep 1; echo \"format: end\" >> \"$L\"'"
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'L=\"$CLAUDE_PROJECT_DIR/.claude/logs/stop-order.log\"; mkdir -p \"$(dirname \"$L\")\"; echo \"gate: start (expects format to be finished)\" >> \"$L\"; sleep 1; echo \"gate: end\" >> \"$L\"'"
+          }
+        ]
+      }
+    ]
+  }
+}

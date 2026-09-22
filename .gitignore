@@ -1,4 +1,7 @@
 .DS_Store
 *.log
-evals/runs/*.jsonl
-!evals/runs/example-predictions.jsonl
+**/evals/runs/*.jsonl
+!**/evals/runs/example-predictions.jsonl
+**/.claude/logs/
+node_modules/
+pnpm-lock.yaml

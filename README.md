@@ -1,161 +1,83 @@
-# Harness Engineering con Claude Code: kit del corso
+# Harness Engineering with Claude Code: workshop kit
 
-Materiale d'aula del workshop. Cinque laboratori, un repository campione per
-ciascuno, più i fogli da stampare.
+Classroom material for the workshop. Two exercises and five labs, a sample
+repository for each lab, and the sheets to print. Every lab has step-by-step
+instructions in [`labs/`](labs/), so you can also do it on your own.
 
-Il codice qui dentro accompagna i capitoli 4-7 di *Harness Engineering with
-Claude Code* (Packt, Alexio Cassani). Gira davvero: le suite del Lab 5 girano
-contro gli hook del Lab 4, non contro delle finte.
+The code accompanies chapters 4 to 7 of *Harness Engineering with Claude Code*
+(Packt, Alexio Cassani). It really runs: the Lab 5 suites run against the Lab 4
+hooks, not against mock-ups.
 
-## Setup, adesso
+## Setup, now
 
 ```bash
 git clone https://github.com/FairMind-Gen-AI-Studio/he-workshop.git
 cd he-workshop
+ls code kit
 claude --version
 ```
 
-### Prerequisiti
+### Prerequisites
 
-| Serve | Dove |
+| You need | For |
 |---|---|
-| `bash`, `git`, `jq` | Lab 4, Lab 5 |
-| `docker` | Lab 3, opzionale |
-| `python3` con `pyyaml` | Lab 5 |
-| `npx` con `prettier` | Lab 4 |
+| `claude` (Claude Code), signed in | Labs 2, 3, 4 |
+| `bash`, `git`, `jq` | Labs 3, 4, 5 |
+| `pnpm` (`corepack enable` gives you one) | Lab 4 |
+| `npx` with `prettier` | Lab 4 |
+| `python3` with `pyyaml` | Lab 5 |
+| `docker` and `@devcontainers/cli` | Lab 3, optional |
 
-Chi non ha Docker fa la variante di lettura del Lab 3, dichiarata sulle slide.
-Il container è verificato su Docker 28.3 per macOS: altrove è terreno non
-battuto, e chi vede fallire il build passa alla lettura senza problemi.
+No Docker? Lab 3 has a reading variant, open to anyone whose build fails too.
+The container is verified on Docker 28.3 for macOS; elsewhere it is untested
+ground.
 
-Controllo rapido:
+Quick check:
 
 ```bash
-for c in bash git jq docker python3 npx; do
-  printf '%-8s %s\n' "$c" "$(command -v $c || echo MANCA)"
+for c in claude bash git jq pnpm npx python3 docker devcontainer; do
+  printf '%-13s %s\n' "$c" "$(command -v $c || echo MISSING)"
 done
 python3 -c 'import yaml; print("pyyaml ok")'
 ```
 
-## Cosa c'è dentro
+## The day
 
-| Cartella | Lab | Cosa contiene |
+| # | Activity | Time | Instructions | Where |
+|---|---|---|---|---|
+| 1 | Exercise 1: Your plateau | 5' | [labs/exercise-1.md](labs/exercise-1.md) | paper, `kit/exercise-1.md` |
+| 2 | Lab 1: Diagnose a harness | 20' | [labs/lab-1.md](labs/lab-1.md) | paper, `kit/matrix-5x4.md` |
+| 3 | Exercise 2: Route a failure | 3' | [labs/exercise-2.md](labs/exercise-2.md) | paper, `kit/exercise-2.md` |
+| 4 | Lab 2: A contract that changes behavior | 30' | [labs/lab-2.md](labs/lab-2.md) | `kit/lab2/`, `code/ch04/` |
+| 5 | Lab 3: Boundaries, as files | 30' | [labs/lab-3.md](labs/lab-3.md) | `code/ch05/` |
+| 6 | Lab 4: The enforcement layer | 35' | [labs/lab-4.md](labs/lab-4.md) | `code/ch06/` |
+| 7 | Lab 5: Watching the instruments fail | 25' | [labs/lab-5.md](labs/lab-5.md) | `code/ch07/` |
+
+Every lab file has the same shape: goal, numbered steps with the exact
+commands, the output to expect, a "done when" checklist and a reset section
+that puts the repository back as you found it. Run every command from the
+repository root unless the step says otherwise.
+
+## What is inside
+
+| Folder | Lab | What it holds |
 |---|---|---|
-| `kit/` | 1 | La matrice 5x4 da stampare, i fogli degli esercizi, e in `kit/lab2/` il CLAUDE.md gonfio |
-| `code/ch04/` | 2 | Un contratto di repository vero: CLAUDE.md, rules, tre skill, il livello annidato in `services/api/` |
-| `code/ch05/` | 3 | La base personale di deny, il devcontainer con firewall in uscita, l'allowlist dei domini |
-| `code/ch06/` | 4 | Otto hook: il gate classifier, la blocklist di contrasto, l'orchestratore Stop, il log dei comandi |
-| `code/ch06-pristine/` | 5 | Copia intatta del precedente. Non toccatela |
-| `code/ch07/` | 5 | La suite avversariale sugli hook e lo scorer dell'eval-set |
+| `labs/` | all | Step-by-step instructions, one file per activity |
+| `kit/` | 1, 2, 3, 4 | The printable sheets, the bloated CLAUDE.md in `kit/lab2/`, the settings merge in `kit/lab3/`, the sibling-hooks snippet in `kit/lab4/` |
+| `code/ch04/` | 2 | A real repository contract: CLAUDE.md, rules, three skills, the nested layer in `services/api/` |
+| `code/ch05/` | 3 | The personal deny floor, the dev container with an egress firewall, the domain allowlist |
+| `code/ch06/` | 4 | Eight hooks: the gate classifier, the contrasting blocklist, the Stop orchestrator, the command log; plus a minimal `pnpm` project for the Stop gate to check |
+| `code/ch06-pristine/` | 5 | An intact copy of the above. Do not touch it |
+| `code/ch07/` | 5 | The adversarial suite for the hooks and the eval-set scorer |
 
-Ogni cartella `code/` ha il suo README con la mappa file per file.
+Every `code/` folder has its own README with a file-by-file map.
 
-**`code/ch06-pristine/` esiste per una ragione.** La suite del Lab 5 manda i
-suoi payload al `gate-aws-cli.sh` del Lab 4. Se puntasse alla copia che avete
-appena modificato, chi ha sbagliato il Lab 4 vedrebbe un run rosso che non
-insegna niente. Punta alla copia intatta, ed è l'unica differenza fra questo
-repository e il companion del libro.
+**`code/ch06-pristine/` exists for a reason.** The Lab 5 suite sends its
+payloads to the Lab 4 `gate-aws-cli.sh`. If it pointed at the copy you just
+changed, anyone who broke something in Lab 4 would see a red run that teaches
+nothing. It points at the intact copy instead.
 
-## I cinque laboratori
+## License
 
-### Lab 1: Diagnosticate un harness (20')
-
-Stampate `kit/matrice-5x4.md`. Riempite una riga intera, quella dove sta il
-fallimento dell'Esercizio 1. Marcate ogni voce **comp** o **inf**. Nominate le
-celle vuote: decisione o incidente, scritto, non pensato. Consegnate tre celle
-vuote ordinate per rischio.
-
-Chi ha un repository proprio sotto mano può usarlo al posto del campione.
-
-### Lab 2: Un contratto che cambia comportamento (30')
-
-```bash
-cd kit/lab2      # qui dentro c'è il CLAUDE.md gonfio, 191 righe
-claude
-```
-
-Incollate `code/ch04/prompts/audit-claude-md.txt`. Il prompt dice "Read
-CLAUDE.md" e in questa cartella quel file è il gonfio, quindi gira senza
-adattamenti. Tagliate riga per riga con il test del repository: se il repository
-sa dirlo da solo, esce. La metrica è righe rimaste su 191.
-
-Poi passate al contratto vero:
-
-```bash
-cd ../../code/ch04
-```
-
-Scrivete la definition of done nel contratto e cablate
-`.claude/skills/verify-done/SKILL.md`. Infine aggiungete un livello annidato in
-`services/api/CLAUDE.md` e scrivete su carta chi vince **prima** di provarlo.
-
-Verifica finale: chiedete all'agente qualcosa che viola la definition of done e
-guardate cosa fa. A questo livello può ancora ignorarla, ed è il punto da cui
-nasce il Lab 4.
-
-### Lab 3: I confini, come file (30')
-
-```bash
-cd code/ch05
-```
-
-Fondete `user-floor.settings.json` nel vostro `~/.claude/settings.json`, non
-sovrascrivetelo. Poi provate a riaprire da un file di progetto uno dei deny
-sulle credenziali: fallisce, ed è il punto dell'esercizio.
-
-```bash
-devcontainer up --workspace-folder .
-# aspettate "egress policy in force"
-curl -sS https://example.com          # deve essere rifiutato
-curl -sS https://api.github.com/zen   # deve rispondere 200
-```
-
-Aggiungete un dominio in `.devcontainer/allowed-domains.txt` con il perchè
-accanto, ricostruite, rifate la prova. Se non sapete scrivere il perché, quel
-dominio non entra.
-
-### Lab 4: Lo strato di enforcement (35')
-
-```bash
-cd code/ch06
-echo '{"tool_input":{"command":"aws ssm get-parameter --name /prod/db-pw"}}' \
-  | .claude/hooks/gate-aws-cli.sh
-```
-
-Quattro payload su stdin, attesi deny, deny, ask e silenzio. Leggete il JSON,
-non il codice di uscita: la differenza fra "ask" e "niente" è tutto il progetto
-del gate. Poi registratelo come `PreToolUse` con matcher `Bash` nel
-`settings.json` e rifate le stesse prove dentro una sessione vera.
-
-Cablate `on-stop.sh`, rompete un test, chiedete all'agente di chiudere. Non
-chiude, e quello che gli torna indietro è l'output del comando, non un verdetto.
-
-La trappola: registrate due hook Stop che dipendono l'uno dall'altro e fateli
-girare qualche volta. Girano in parallelo, senza ordine. E' il motivo per cui
-`on-stop.sh` è uno solo che sequenzia al proprio interno.
-
-### Lab 5: Vedere fallire gli strumenti (25')
-
-```bash
-cd code/ch07
-bash harness-tests/run.sh
-```
-
-Si legge il **testo** del fallimento, non la parola FAIL: con la gamba deny
-rimossa il gate non risponde "allow", non risponde niente. Un gate che ha smesso
-di negare è identico a un gate che funziona.
-
-```bash
-bash evals/run.sh score \
-  --dataset evals/tasks \
-  --predictions evals/runs/example-predictions.jsonl
-```
-
-Aggiungete tre righe `oversize` ai prediction e verificate che il pass rate resti
-invariato. Poi scrivete un task YAML nuovo per una regola del vostro harness, e
-chi arriva in fondo lo fa girare.
-
-## Licenza
-
-Il codice dei capitoli accompagna il libro ed è distribuito con il repository
-companion di Packt. Il materiale d'aula è di FairMind.
+The chapter code accompanies the book and is distributed with Packt's
+companion repository. The classroom material belongs to FairMind.
