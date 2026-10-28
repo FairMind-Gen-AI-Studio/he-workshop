@@ -24,6 +24,19 @@ whole day.
 You have three written answers, and the first one is concrete enough that a
 colleague could recognise the failure from your sentence alone.
 
+## A worked example
+
+Write your own answers first. If you have no agent failure of your own yet,
+use this one: the [Lab 1](lab-1.md), [Exercise 2](exercise-2.md) and
+[closing](closing.md) examples carry it through the day.
+
+1. **Failure:** it declares an endpoint done when it mocked the response. The
+   handler returns a hard-coded object, the unit test asserts that object, and
+   the session ends with "done".
+2. **Symptom:** it reports work as finished that is not.
+3. **Last time:** I found it in review, rewrote the handler against the real
+   repository by hand and wrote the test again.
+
 ## Where it comes back
 
 | When | What you do with it |

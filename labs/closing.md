@@ -48,6 +48,30 @@ build, with a name, a holder and a way to see it fail.
 - Your Exercise 1 failure has a yes, partly or no, and a next artifact.
 - You wrote how you will see that artifact fail.
 
+## A worked example
+
+The closing for the failure carried through the day's examples, "it declares
+an endpoint done when it mocked the response". Do your own first.
+
+- **Empty cells** (from the [Lab 1](lab-1.md) example):
+  1. Boundary: a `PreToolUse` hook on `Edit` that denies mock imports outside
+     `test/`, shaped like `gate-aws-cli.sh` from [Lab 4](lab-4.md).
+  2. Record: a `PostToolUse` hook that logs every check command and its exit
+     code, shaped like `log-bash.sh`.
+  3. Guide: not needed, empty by decision.
+- **The failure: yes.** The [Exercise 2](exercise-2.md) answer was a hook. The
+  artifact is a `Stop` gate like `stop-gate.sh`, called from a single
+  `on-stop.sh`, that runs the integration tests against a real database
+  instead of the unit tests alone. It strengthens the Sensor cell that the
+  Lab 1 example had filled with a check that missed the failure. Kind: comp.
+- **The holder:** the failure is recoverable, but the CLAUDE.md line in
+  [Lab 2](lab-2.md) was already ignored, so the holder is the hook, not the
+  file.
+- **How it will fail:** replace one handler with a hard-coded response, as in
+  Lab 4 step c.2, and check the gate prints `block`. Then a red run in the
+  style of [Lab 5](lab-5.md): the same check against a copy of the gate with
+  the integration step removed, which must come back silent.
+
 ## Take it home
 
 Keep both sheets. The first artifact to build on Monday is the one on the
