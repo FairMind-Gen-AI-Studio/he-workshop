@@ -102,7 +102,7 @@ copying over it loses your configuration.
 2. Build and start the container from `code/ch05`:
 
    ```bash
-   cd code/ch05
+   cd "$(git rev-parse --show-toplevel)/code/ch05"
    devcontainer up --workspace-folder .
    ```
 

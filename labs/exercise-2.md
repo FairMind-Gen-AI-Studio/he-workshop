@@ -29,3 +29,15 @@ failure is irreversible, raising a probability is not an answer.
 
 If your answer to question 1 was "no going back" and your answer to question 2
 was a line in CLAUDE.md, route it again.
+
+## Two worked examples
+
+| Failure | 1. Cost if ignored | 2. Primitive |
+|---|---|---|
+| It declares an endpoint done when it mocked the response | Recoverable: caught in review, at the price of a review cycle | A **hook**: a `Stop` hook that runs the integration tests, because a line in CLAUDE.md is what it already ignores. A **skill** (`verify-done`) is enough only if the failure is rare |
+| It runs the migration against the production database | No going back: data | A **permission rule** that denies the production credentials, or a **sandbox** with no route to production. Never only a contract line |
+
+The first row shows that a recoverable failure can still want something
+stronger than an instruction once the instruction has been tried and ignored.
+The second shows the rule: when the cost is "no going back", the answer is a
+boundary.

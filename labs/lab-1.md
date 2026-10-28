@@ -54,6 +54,31 @@ is worth more than twenty sketched cells.
 - Three empty cells are listed, most expensive first, each with its failure
   and its cost.
 
+## A worked example
+
+Fill in your own row before reading this. It is one possible answer, for the
+failure used as an example in Exercise 1: "it declares an endpoint done when
+it mocked the response". Nothing stopped it at the end of the session, so the
+row is **hooks and middleware**.
+
+| Guide | Sensor | Boundary | Record |
+|---|---|---|---|
+| Empty, by decision: the definition of done lives in CLAUDE.md, the context row | `Stop` hook runs `pnpm test` (comp). It passes: the unit tests run against the same mock | Empty, by accident | Empty, by accident |
+
+The sensor is filled and still misses the failure. That is worth writing down:
+a cell with an artifact in it is not a cell that covers your failure.
+
+The three empty cells, most expensive first:
+
+1. **Boundary.** Would have caught: a mock written into endpoint code outside
+   `test/`, refused by a `PreToolUse` hook on `Edit`. Cost: the mock reaches
+   staging and a day of QA goes into a feature that never worked.
+2. **Record.** Would have caught: which checks actually ran before "done".
+   Cost: every review re-runs everything by hand, and review becomes the
+   bottleneck.
+3. **Guide.** Would have caught: little the contract does not already say.
+   Cost: low, which is why it is empty by decision.
+
 ## Keep the sheet
 
 You pick it up again at the [closing](closing.md), to see which cells the day filled and
