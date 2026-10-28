@@ -30,7 +30,7 @@ colleague could recognise the failure from your sentence alone.
 |---|---|
 | [Lab 1](lab-1.md) | Choose the matrix row where this failure lives |
 | [Exercise 2](exercise-2.md) | Choose the Claude Code primitive that addresses it |
-| Closing | Check whether you now know how to close it |
+| [Closing](closing.md) | Check whether you now know how to close it |
 
 Nobody reads your sheet unless you let them. Write it vague and you will notice
 by the end of the day.

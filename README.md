@@ -1,6 +1,6 @@
 # Harness Engineering with Claude Code: workshop kit
 
-Classroom material for the workshop. Two exercises and five labs, a sample
+Classroom material for the workshop. Two exercises, five labs and a closing, a sample
 repository for each lab, and the sheets to print. Every lab has step-by-step
 instructions in [`labs/`](labs/), so you can also do it on your own.
 
@@ -53,6 +53,7 @@ python3 -c 'import yaml; print("pyyaml ok")'
 | 5 | Lab 3: Boundaries, as files | 30' | [labs/lab-3.md](labs/lab-3.md) | `code/ch05/` |
 | 6 | Lab 4: The enforcement layer | 35' | [labs/lab-4.md](labs/lab-4.md) | `code/ch06/` |
 | 7 | Lab 5: Watching the instruments fail | 25' | [labs/lab-5.md](labs/lab-5.md) | `code/ch07/` |
+| 8 | Closing: Back to your sheets | 10' | [labs/closing.md](labs/closing.md) | paper, your sheets |
 
 Every lab file has the same shape: goal, numbered steps with the exact
 commands, the output to expect, a "done when" checklist and a reset section

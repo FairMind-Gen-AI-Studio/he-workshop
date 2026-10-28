@@ -56,5 +56,5 @@ is worth more than twenty sketched cells.
 
 ## Keep the sheet
 
-You pick it up again at the closing, to see which cells the day filled and
+You pick it up again at the [closing](closing.md), to see which cells the day filled and
 which you now know how to fill.
