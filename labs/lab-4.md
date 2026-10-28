@@ -127,7 +127,8 @@ passed. Without `CLICKUP_TOKEN` the ticket step exits quietly.
    echo '{}' | CLAUDE_PROJECT_DIR="$PWD" .claude/hooks/stop-gate.sh
    ```
 
-   `pnpm test` reports `# pass 1`; the gate prints nothing.
+   `pnpm test` reports `ℹ pass 1` (`# pass 1` when the output is not a
+   terminal); the gate prints nothing.
 2. Break the test:
 
    ```bash

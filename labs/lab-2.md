@@ -9,7 +9,7 @@ enforce.
 
 `kit/lab2/CLAUDE.md` is a 191-line instruction file for a fictional monorepo,
 Fairmind Studio. `code/ch04/` is the reference contract for the same monorepo:
-32 lines, a definition of done, a `verify-done` skill and a nested file in
+28 lines, a definition of done, a `verify-done` skill and a nested file in
 `services/api/`. You work on the first and compare against the second. Neither
 directory contains application code, only the contract files.
 
@@ -51,8 +51,8 @@ directory contains application code, only the contract files.
    wc -l CLAUDE.md
    ```
 
-   The reference contract, `code/ch04/CLAUDE.md`, has 32 lines. If you land
-   between 30 and 45 you have understood the test. Above 80, you cut words
+   The reference contract, `code/ch04/CLAUDE.md`, has 28 lines. If you land
+   between 25 and 45 you have understood the test. Above 80, you cut words
    instead of paragraphs: go back to step 3. Write down your number, not
    "I shortened it".
 
@@ -134,7 +134,7 @@ adds the layer that does not depend on the agent agreeing.
 
 ## Done when
 
-- You have a line count for your trimmed file (target 30 to 45).
+- You have a line count for your trimmed file (target 25 to 45).
 - Your contract has a definition of done with a holder next to each criterion,
   and a `verify-done` skill that matches it.
 - You wrote a prediction for the nested contradiction before testing it.

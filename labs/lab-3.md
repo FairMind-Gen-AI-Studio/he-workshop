@@ -77,6 +77,10 @@ copying over it loses your configuration.
    of the exercise, not a snag. Rules from every scope are merged, then deny is evaluated before ask
    and before allow, so a deny wins wherever it was written. A project cannot
    reopen what your user floor closed.
+
+   You will also see the `fairmind-studio` MCP server fail to connect. That
+   is expected: `.mcp.json` points it at `mcp.fairmind.example`, a placeholder
+   host that exists only to show a server the settings approve. Ignore it.
 5. In the same session type `/permissions` and find the `Read(**/.env)` deny
    and your `Read(./.env)` allow side by side.
 
@@ -174,8 +178,20 @@ project:
 
 ```bash
 mv ~/.claude/settings.json.before-lab3 ~/.claude/settings.json
-cd code/ch05
+cd "$(git rev-parse --show-toplevel)/code/ch05"
 rm -f .env .claude/settings.local.json
 git checkout -- .devcontainer/allowed-domains.txt
-docker rm -f $(docker ps -aq --filter "label=devcontainer.local_folder=$PWD")
+```
+
+If you did part (b), also remove the container and the volume that holds its
+Claude Code configuration. Each command does nothing if there is nothing left
+to remove:
+
+```bash
+for c in $(docker ps -aq --filter "label=devcontainer.local_folder=$PWD"); do
+  docker rm -f "$c"
+done
+for v in $(docker volume ls -q --filter name=agent-claude-config-); do
+  docker volume rm "$v"
+done
 ```
