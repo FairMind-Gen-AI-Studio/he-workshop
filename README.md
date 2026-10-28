@@ -24,9 +24,10 @@ claude --version
 | `claude` (Claude Code), signed in | Labs 2, 3, 4 |
 | `bash`, `git`, `jq` | Labs 3, 4, 5 |
 | `pnpm` (`corepack enable` gives you one) | Lab 4 |
-| `npx` with `prettier` | Lab 4 |
+| `npx` with `prettier` and `eslint` | Lab 4 |
 | `python3` with `pyyaml` | Lab 5 |
 | `docker` and `@devcontainers/cli` | Lab 3, optional |
+| `bubblewrap` and `socat`, on Linux or WSL2 only | Lab 3 |
 
 No Docker? Lab 3 has a reading variant, open to anyone whose build fails too.
 The container is verified on Docker 28.3 for macOS; elsewhere it is untested

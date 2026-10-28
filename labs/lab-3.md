@@ -10,6 +10,12 @@ proved.
 No Docker, or the build fails? Do (a), then the [reading variant](#reading-variant)
 instead of (b) and (c). You learn the same thing.
 
+**On Linux or WSL2,** part (a) needs the sandbox runtime before you start:
+`sudo apt-get install bubblewrap socat` (or your distribution's equivalent).
+`code/ch05/.claude/settings.json` sets `failIfUnavailable: true`, so without
+them the session refuses to start instead of running unsandboxed. WSL1 and
+native Windows have no sandbox: pair with someone on macOS or Linux for (a).
+
 **Start the image build first** if you are doing (b): it is the slow part. Run
 step b.1 and b.2 now in a second terminal, then come back to (a).
 

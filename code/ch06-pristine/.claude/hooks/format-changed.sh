@@ -6,7 +6,9 @@ set -uo pipefail
 
 cd "${CLAUDE_PROJECT_DIR:-.}" || exit 0
 
-changed=$(git diff --name-only HEAD 2>/dev/null | grep -E '\.(ts|tsx|js|jsx)$')
+# --relative: paths relative to the project directory, which need not be the
+# repository root.
+changed=$(git diff --name-only --relative HEAD 2>/dev/null | grep -E '\.(ts|tsx|js|jsx)$')
 [[ -n "$changed" ]] || exit 0
 
 # shellcheck disable=SC2086

@@ -154,30 +154,30 @@ Be careful with database migrations. Always review them before applying.
 - Install: `pnpm install`
 - Develop: `pnpm dev`
 - Build: `pnpm build`
-- Test: `pnpm test`
+- Test: `pnpm --filter <pkg> test` (the root `pnpm test` takes twenty minutes)
 - Lint: `pnpm lint`
 - Format: `pnpm format`
-- Type check: `pnpm typecheck`
+- Type check: `pnpm --filter <pkg> typecheck`, before every commit
 - Migrate: `alembic upgrade head`
 
 ## Conventions
 
 - Use TypeScript everywhere on the frontend
 - Use type hints everywhere on the backend
-- Components are PascalCase, hooks are camelCase with a use prefix
-- Python modules are snake_case
+- Components are PascalCase, hooks are camelCase with a use prefix, Python
+  modules are snake_case
+- Run commands from the package directory, never from the root
 - Database access goes through the repository layer in `services/api/repos/`.
   Never write raw SQL in a route handler.
 - Errors returned to the client use the envelope in
   `packages/shared/errors.ts`.
-- Prefer named exports over default exports
-- Keep imports sorted
+- Prefer named exports over default exports and keep imports sorted
 - Use absolute imports with the configured path aliases
 
 ## Testing
 
 Tests live next to the code they test on the frontend and in `services/api/tests`
-on the backend. Run the whole suite before opening a pull request.
+on the backend. Local and staging testing follow `.claude/rules/testing.md`.
 
 ## Deployment
 
@@ -187,5 +187,5 @@ The cluster reconciles within a few minutes.
 
 ## Contributing
 
-Please open a pull request with a clear description of the change. Link the
-relevant ticket. Make sure CI is green. Request review from a team member.
+Every task starts from a ticket and the branch is named for it. Open a pull
+request with a clear description. Make sure CI is green. Request a review.
