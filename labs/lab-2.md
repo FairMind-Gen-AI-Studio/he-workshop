@@ -82,7 +82,9 @@ directory contains application code, only the contract files.
 
 5. Restart `claude` in `kit/lab2` and type `/verify-done`. The skill should be
    offered. Its steps must name the same checks as your contract, one row per
-   criterion.
+   criterion. `kit/lab2` holds no code, so if you let the skill run, every
+   check comes back failed or not run. That is expected: what you are checking
+   is that its rows match your criteria.
 
 ## c) Add the nested level
 
@@ -112,8 +114,11 @@ directory contains application code, only the contract files.
    Run each one two or three times. Compare with your prediction. Starting
    inside a package loads that package's file plus every ancestor; starting at
    the root loads the root file, and the nested one only arrives when the agent
-   reads files there. Whatever you saw, ask yourself whether you could rely on
-   it.
+   reads files there. In practice the agent often goes and reads the nested
+   file on its own: in our runs with Claude Code 2.1 it answered `pytest -q`
+   from both starting points, every time. Whatever you saw, ask yourself
+   whether you could rely on it, given that it depends on what the agent chose
+   to read.
 
 ## d) Ask for something that breaks the definition of done
 
@@ -128,9 +133,12 @@ directory contains application code, only the contract files.
 2. Watch what it does. Does it run the definition of done? Does it load the
    `verify-done` skill? Does it say "done" anyway?
 
-At this level the agent can still ignore the contract. That is not a failure of
-the lab, it is the observation the lab exists to produce: [Lab 4](lab-4.md)
-adds the layer that does not depend on the agent agreeing.
+A recent model often refuses to call the task done and lists the criteria it
+did not check. That is the contract working, by the agent's choice: in a
+longer session, under a different prompt or with another model version it may
+decide otherwise, and nothing in this layer stops it. Whichever you saw, that
+is the observation the lab exists to produce: [Lab 4](lab-4.md) adds the layer
+that does not depend on the agent agreeing.
 
 ## Done when
 

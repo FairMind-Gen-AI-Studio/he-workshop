@@ -11,7 +11,7 @@ Run commands from the package directory, never from the root.
 ## Conventions
 - Database access goes through the repository layer in `services/api/repos/`.
   Never write raw SQL in a route handler.
-- Errors returned to the client use the envelope in `packages/shared/errors.ts`.
+- Errors returned to the client use the envelope in `packages/shared/src/errors.ts`.
 
 ## Workflow
 - Every task starts from a ticket and the branch is named for it.
