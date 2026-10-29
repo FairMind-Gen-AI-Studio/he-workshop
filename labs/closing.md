@@ -1,6 +1,6 @@
 # Closing: Back to your sheets
 
-**Time:** 10 minutes · **Where:** on paper, on your own · **You need:** your
+**Time:** 10 minutes · **Where:** your own files, on your own · **You need:** your
 [Exercise 1](exercise-1.md) sheet and your [Lab 1](lab-1.md) matrix
 
 **Goal:** turn the failure you wrote this morning into one artifact you will
@@ -9,7 +9,7 @@ build, with a name, a holder and a way to see it fail.
 ## Steps
 
 1. **Place the day on your matrix.** Each lab built artifacts for one or more
-   cells. Pencil them onto your Lab 1 sheet in a different color, with `comp`
+   cells. Add them to your Lab 1 matrix, marked apart from this morning's entries, with `comp`
    or `inf`:
 
    | Lab | Artifact | Cell | Kind |

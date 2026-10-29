@@ -27,10 +27,11 @@ check() {
 # command                                              expected decision
 check "aws ssm get-parameter --name /prod/db-password"  deny
 check "aws ssm get-parameters-by-path --path /prod"     deny
+check "aws ssm  get-parameter --name /prod/db-password" deny
 check "aws rds delete-db-instance --db-instance-id x"   ask
 check "aws s3 ls s3://reports/"                         silent
 
 if [ "$failures" -eq 0 ]; then
-  echo "  4 cases, all as expected"
+  echo "  5 cases, all as expected"
 fi
 exit "$failures"

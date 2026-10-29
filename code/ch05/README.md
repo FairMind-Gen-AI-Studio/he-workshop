@@ -12,7 +12,7 @@ shape and adapt the lists.
 | `.devcontainer/devcontainer.json` | The container for unattended work: non-root user, the two capabilities the firewall needs, no host secrets mounted, telemetry off |
 | `.devcontainer/Dockerfile` | Builds the image: iptables and ipset, a non-root `agent` user whose sudo reaches the firewall script and nothing else, the CLI pinned by build argument |
 | `.devcontainer/allowed-domains.txt` | The egress allowlist, one domain per line with the reason beside it |
-| `.devcontainer/init-firewall.sh` | Default-deny egress: resolves the allowlist into an ipset, rejects everything else and refuses to finish unless an unlisted host fails and the remote answers |
+| `.devcontainer/init-firewall.sh` | Default-deny egress: resolves the allowlist into an ipset, adds GitHub's published ranges (its API address rotates), rejects everything else and refuses to finish unless an unlisted host fails and the remote answers |
 
 To try the container: open the folder in an editor that supports dev
 containers, or run `devcontainer up --workspace-folder .` with the reference

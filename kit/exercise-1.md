@@ -1,13 +1,14 @@
 # Exercise 1: Your plateau
 
-Five minutes, on paper, on your own. You need this sheet all day: do not throw
-it away.
+Five minutes, on your own. Copy this sheet into a file of your own and keep it
+open: you need it all day.
 
 ## Write down
 
 **1. Your agent's most recurrent failure.**
 Concrete. Not "sometimes it gets it wrong" but the specific thing that makes you
-sigh at least once a week.
+sigh at least once a week. Test: a colleague should recognise the failure from
+your sentence alone.
 
 ________________________________________________________________________
 
@@ -15,7 +16,7 @@ ________________________________________________________________________
 
 **2. Which symptom of the plateau it matches.**
 Does it report work as finished that is not? Has review become the bottleneck?
-Does it duplicate instead of reusing?
+Does it duplicate instead of reusing? Or name your own.
 
 ________________________________________________________________________
 

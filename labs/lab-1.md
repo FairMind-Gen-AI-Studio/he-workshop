@@ -1,6 +1,6 @@
 # Lab 1: Diagnose a harness
 
-**Time:** 20 minutes · **Where:** on paper · **Sheet:** [`kit/matrix-5x4.md`](../kit/matrix-5x4.md)
+**Time:** 20 minutes · **Where:** your own file · **Sheet:** [`kit/matrix-5x4.md`](../kit/matrix-5x4.md)
 · **You need:** your [Exercise 1](exercise-1.md) sheet
 
 **Goal:** fill in one row of the 5x4 matrix completely and find the three
@@ -22,8 +22,8 @@ is worth more than twenty sketched cells.
 
 ## Steps
 
-1. Print `kit/matrix-5x4.md`, or draw five rows and four columns on an A4
-   sheet. It takes a minute.
+1. Copy `kit/matrix-5x4.md` into a file of your own, next to your Exercise 1
+   answers, or draw five rows and four columns on paper. It takes a minute.
 2. **Choose the row.** Take the failure from Exercise 1 and pick the row where
    it lives. If the agent reads the wrong thing, it is probably context; if it
    runs something it should not, probably tools or infrastructure; if nothing

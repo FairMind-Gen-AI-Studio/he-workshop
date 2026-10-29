@@ -9,7 +9,9 @@
 set -euo pipefail
 
 input=$(cat)
-command=$(jq -r '.tool_input.command // empty' <<<"$input")
+# Squeeze runs of whitespace: "aws ssm  get-parameter" is the same call to
+# the CLI, and must not slip past the string match below.
+command=$(jq -r '.tool_input.command // empty' <<<"$input" | tr -s '[:space:]' ' ')
 
 # Only judge commands that invoke the AWS CLI.
 [[ "$command" == *aws\ * || "$command" == aws\ * ]] || exit 0

@@ -190,14 +190,17 @@ git checkout -- .devcontainer/allowed-domains.txt
 ```
 
 If you did part (b), also remove the container and the volume that holds its
-Claude Code configuration. Each command does nothing if there is nothing left
-to remove:
+Claude Code configuration. The loop touches only this folder's container and
+the volumes mounted in it, and does nothing if there is nothing left to
+remove:
 
 ```bash
 for c in $(docker ps -aq --filter "label=devcontainer.local_folder=$PWD"); do
+  vols=$(docker inspect -f '{{range .Mounts}}{{if eq .Type "volume"}}{{.Name}} {{end}}{{end}}' "$c")
   docker rm -f "$c"
-done
-for v in $(docker volume ls -q --filter name=agent-claude-config-); do
-  docker volume rm "$v"
+  for v in $vols; do docker volume rm "$v"; done
 done
 ```
+
+The image stays on disk for the next build. `docker images 'vsc-ch05-*'`
+shows it, and `docker rmi` removes it.

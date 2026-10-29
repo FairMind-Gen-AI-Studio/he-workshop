@@ -28,7 +28,8 @@ def load_tasks(dataset: pathlib.Path) -> dict[str, dict]:
     try:
         import yaml
     except ModuleNotFoundError:
-        sys.exit("pyyaml is required: pip install pyyaml")
+        sys.exit("pyyaml is required: activate the virtual environment from the "
+                 "README (source .venv/bin/activate) or create it there")
     tasks = {}
     for path in sorted(dataset.glob("*.yaml")):
         doc = yaml.safe_load(path.read_text())

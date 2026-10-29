@@ -4,12 +4,18 @@
 # Everything the container is allowed to reach is listed in
 # /etc/agent/allowed-domains.txt. Each domain is resolved once at start and
 # its addresses go into an ipset; every other outbound connection is
-# rejected. Run as root from postStartCommand, after the network is up.
+# rejected. GitHub rotates the address behind api.github.com every few
+# minutes, so for GitHub hosts the published ranges go in as well: a single
+# resolved address would stop answering soon after the policy is proved.
+# Run as root from postStartCommand, after the network is up.
 set -euo pipefail
 
 ALLOWLIST=${ALLOWLIST:-/etc/agent/allowed-domains.txt}
 
-# Start clean.
+# Start clean. Flushing leaves the DROP policies of a previous run in place,
+# which would drop the DNS replies below, so open them first.
+iptables -P INPUT ACCEPT
+iptables -P OUTPUT ACCEPT
 iptables -F
 iptables -X
 ipset destroy allowed 2>/dev/null || true
@@ -34,6 +40,20 @@ while read -r domain _; do
   done
   echo "init-firewall: allowed $domain"
 done < "$ALLOWLIST"
+
+# GitHub publishes the ranges behind its web, API and git endpoints.
+if grep -qE '^(api\.)?github\.com([[:space:]]|$)' "$ALLOWLIST"; then
+  ranges=$(curl --silent --fail --connect-timeout 10 https://api.github.com/meta \
+    | jq -r '(.web + .api + .git)[] | select(contains(":") | not)' || true)
+  if [[ -z "$ranges" ]]; then
+    echo "init-firewall: cannot fetch GitHub's ranges from api.github.com/meta" >&2
+    exit 1
+  fi
+  for range in $ranges; do
+    ipset add allowed "$range" -exist
+  done
+  echo "init-firewall: allowed GitHub's published ranges"
+fi
 
 # Let replies come back, let listed destinations out, drop the rest.
 iptables -A INPUT  -m state --state ESTABLISHED,RELATED -j ACCEPT

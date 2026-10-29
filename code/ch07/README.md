@@ -24,19 +24,20 @@ scorer. Nothing else, and nothing to install for the gate suite.
 
 The point of `run.sh` is the second half. A suite that has only ever been seen
 green proves nothing, so the script cuts the credential-deny branch out of a
-copy of the gate and runs the same four cases again:
+copy of the gate and runs the same five cases again:
 
 ```
 $ bash harness-tests/run.sh
 green run: the gate as shipped
-  4 cases, all as expected
+  5 cases, all as expected
 
 red run: the same suite against a gate with its deny leg removed
   FAIL  aws ssm get-parameter --name /prod/db-password: expected deny, got silent
   FAIL  aws ssm get-parameters-by-path --path /prod: expected deny, got silent
+  FAIL  aws ssm  get-parameter --name /prod/db-password: expected deny, got silent
 
-both runs behaved: green against the real gate, red on both deny cases
-against the broken one. The suite has now been observed failing.
+both runs behaved: green against the real gate, red on all three deny
+cases against the broken one. The suite has now been observed failing.
 ```
 
 Read the failure text rather than the word FAIL. With its deny leg removed the

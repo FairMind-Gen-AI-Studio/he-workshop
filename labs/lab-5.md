@@ -10,6 +10,9 @@ The suite in `harness-tests/` sends its payloads to
 `code/ch06-pristine/.claude/hooks/gate-aws-cli.sh`, not to the copy you
 changed in Lab 4. If you see a strange result, check that first.
 
+Parts (b) and (c) need `pyyaml`. If you opened a new terminal since the
+setup, run `source .venv/bin/activate` from the repository root first.
+
 ## a) Run the adversarial suite
 
 1. From the repository root:
@@ -23,25 +26,28 @@ changed in Lab 4. If you see a strange result, check that first.
 
    ```text
    green run: the gate as shipped
-     4 cases, all as expected
+     5 cases, all as expected
 
    red run: the same suite against a gate with its deny leg removed
      FAIL  aws ssm get-parameter --name /prod/db-password: expected deny, got silent
      FAIL  aws ssm get-parameters-by-path --path /prod: expected deny, got silent
+     FAIL  aws ssm  get-parameter --name /prod/db-password: expected deny, got silent
 
-   both runs behaved: green against the real gate, red on both deny cases
-   against the broken one. The suite has now been observed failing.
+   both runs behaved: green against the real gate, red on all three deny
+   cases against the broken one. The suite has now been observed failing.
    ```
 
-   It runs the same four cases twice: green against the real gate, red against
+   It runs the same five cases twice: green against the real gate, red against
    a copy with the credential-deny leg cut out.
 3. Read the **text** of the failure, not the word FAIL. With its deny leg
    removed the gate does not answer `allow`. It answers nothing:
    `get-parameter` falls into the read-only class and the hook exits silently.
    A gate that has stopped denying is indistinguishable from a gate that works.
    That is the whole reason the red run exists.
-4. Open `harness-tests/test-gate-aws-cli.sh` and match the four `check` lines
-   to the four payloads you sent by hand in Lab 4.
+4. Open `harness-tests/test-gate-aws-cli.sh` and match the five `check` lines
+   to the four payloads you sent by hand in Lab 4. The fifth is the first
+   payload with a doubled space: before the gate squeezed whitespace, that
+   credential read came back silent and the four-case suite stayed green.
 
 If `run.sh` ever reports a green red run, that is a build failure and the
 script exits non-zero.
