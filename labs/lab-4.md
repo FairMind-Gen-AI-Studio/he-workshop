@@ -147,7 +147,9 @@ passed. Without `CLICKUP_TOKEN` the ticket step exits quietly.
    of the failing command, starting with
    `Definition of done not met: 'pnpm test' failed. Fix this before finishing:`
    followed by the assertion (`expected: 6`, `actual: 5`), not a verdict. It
-   then goes back to work on its own. That is the loop closing.
+   then goes back to work on its own. That is the loop closing. To check its
+   fix it will want to run `pnpm test`, and in an interactive session it asks
+   your permission first: allow it.
 5. Look at what it changed (`git diff test/ src/`) and decide whether the fix
    is the right one.
 
