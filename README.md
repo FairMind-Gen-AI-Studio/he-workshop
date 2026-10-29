@@ -1,7 +1,7 @@
 # Harness Engineering with Claude Code: workshop kit
 
 Classroom material for the workshop. Two exercises, five labs and a closing, a sample
-repository for each lab, and the sheets to print. Every lab has step-by-step
+repository for each lab, and the sheets to fill in. Every lab has step-by-step
 instructions in [`labs/`](labs/), so you can also do it on your own.
 
 The code accompanies chapters 4 to 7 of *Harness Engineering with Claude Code*
@@ -62,14 +62,14 @@ python3 -c 'import yaml; print("pyyaml ok")'
 
 | # | Activity | Time | Instructions | Where |
 |---|---|---|---|---|
-| 1 | Exercise 1: Your plateau | 5' | [labs/exercise-1.md](labs/exercise-1.md) | paper, `kit/exercise-1.md` |
-| 2 | Lab 1: Diagnose a harness | 20' | [labs/lab-1.md](labs/lab-1.md) | paper, `kit/matrix-5x4.md` |
-| 3 | Exercise 2: Route a failure | 3' | [labs/exercise-2.md](labs/exercise-2.md) | paper, `kit/exercise-2.md` |
+| 1 | Exercise 1: Your plateau | 5' | [labs/exercise-1.md](labs/exercise-1.md) | your file, `kit/exercise-1.md` |
+| 2 | Lab 1: Diagnose a harness | 20' | [labs/lab-1.md](labs/lab-1.md) | your file, `kit/matrix-5x4.md` |
+| 3 | Exercise 2: Route a failure | 3' | [labs/exercise-2.md](labs/exercise-2.md) | your file, `kit/exercise-2.md` |
 | 4 | Lab 2: A contract that changes behavior | 30' | [labs/lab-2.md](labs/lab-2.md) | `kit/lab2/`, `code/ch04/` |
 | 5 | Lab 3: Boundaries, as files | 30' | [labs/lab-3.md](labs/lab-3.md) | `code/ch05/` |
 | 6 | Lab 4: The enforcement layer | 35' | [labs/lab-4.md](labs/lab-4.md) | `code/ch06/` |
 | 7 | Lab 5: Watching the instruments fail | 25' | [labs/lab-5.md](labs/lab-5.md) | `code/ch07/` |
-| 8 | Closing: Back to your sheets | 10' | [labs/closing.md](labs/closing.md) | paper, your sheets |
+| 8 | Closing: Back to your sheets | 10' | [labs/closing.md](labs/closing.md) | your sheets |
 
 Every lab file has the same shape: goal, numbered steps with the exact
 commands, the output to expect, a "done when" checklist and a reset section
@@ -81,7 +81,7 @@ repository root unless the step says otherwise.
 | Folder | Lab | What it holds |
 |---|---|---|
 | `labs/` | all | Step-by-step instructions, one file per activity |
-| `kit/` | 1, 2, 3, 4 | The printable sheets, the bloated CLAUDE.md in `kit/lab2/`, the settings merge in `kit/lab3/`, the sibling-hooks snippet in `kit/lab4/` |
+| `kit/` | 1, 2, 3, 4 | The exercise sheets, the bloated CLAUDE.md in `kit/lab2/`, the settings merge in `kit/lab3/`, the sibling-hooks snippet in `kit/lab4/` |
 | `code/ch04/` | 2 | A real repository contract: CLAUDE.md, rules, three skills, the nested layer in `services/api/` |
 | `code/ch05/` | 3 | The personal deny floor, the dev container with an egress firewall, the domain allowlist |
 | `code/ch06/` | 4 | Eight hooks: the gate classifier, the contrasting blocklist, the Stop orchestrator, the command log; plus a minimal `pnpm` project for the Stop gate to check |

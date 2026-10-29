@@ -1,14 +1,15 @@
 # Exercise 1: Your plateau
 
-**Time:** 5 minutes · **Where:** on paper, on your own · **Sheet:** [`kit/exercise-1.md`](../kit/exercise-1.md)
+**Time:** 5 minutes · **Where:** your own file, on your own · **Sheet:** [`kit/exercise-1.md`](../kit/exercise-1.md)
 
 **Goal:** name the one failure of your agent that you will carry through the
 whole day.
 
 ## Steps
 
-1. Print `kit/exercise-1.md`, or copy its three questions onto a blank sheet.
-   Write on paper, not on screen: the sheet stays on your desk all day.
+1. Copy `kit/exercise-1.md` into a file of your own, or onto paper if you
+   prefer. Keep it open all day: Lab 1, Exercise 2 and the closing come back
+   to it.
 2. **Your agent's most recurrent failure.** Write the specific thing, not a
    category. "Sometimes it gets it wrong" is no use. "It declares an endpoint
    done when it mocked the response" is usable.

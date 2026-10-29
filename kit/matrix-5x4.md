@@ -1,6 +1,7 @@
 # The 5x4 matrix
 
-Print one copy each. You need it in Lab 1 and again at the closing.
+Copy it into a file of your own, or print it. You need it in Lab 1 and again
+at the closing.
 
 Five components on the rows, four roles on the columns. Every deliberate
 artifact of your harness sits in one cell. Runtime defaults are not artifacts:
