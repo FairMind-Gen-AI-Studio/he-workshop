@@ -31,13 +31,29 @@ claude --version
 
 No Docker? Lab 3 has a reading variant, open to anyone whose build fails too.
 The container is verified on Docker 28.3 for macOS; elsewhere it is untested
-ground.
+ground. The image is native on Apple Silicon: if Docker Desktop offers
+Rosetta, you can turn it off. Docker Desktop on macOS may install `docker`
+in `~/.docker/bin` without adding it to your `PATH`. The dev container CLI
+installs with `npm install -g @devcontainers/cli`.
 
-Quick check:
+`pyyaml` goes in a virtual environment at the repository root, because
+Homebrew's and most distributions' Python refuse a plain `pip install`:
 
 ```bash
-for c in claude bash git jq pnpm npx python3 docker devcontainer; do
+python3 -m venv .venv && source .venv/bin/activate && pip install pyyaml
+```
+
+The environment is active only in the shell that sourced it. Every new
+terminal needs `source .venv/bin/activate` again before Lab 5.
+
+Quick check, from the repository root:
+
+```bash
+for c in claude bash git jq pnpm npx python3; do
   printf '%-13s %s\n' "$c" "$(command -v $c || echo MISSING)"
+done
+for c in docker devcontainer; do
+  printf '%-13s %s\n' "$c" "$(command -v $c || echo 'missing (optional: Lab 3 b and c)')"
 done
 python3 -c 'import yaml; print("pyyaml ok")'
 ```

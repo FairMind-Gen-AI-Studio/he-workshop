@@ -10,6 +10,9 @@ The suite in `harness-tests/` sends its payloads to
 `code/ch06-pristine/.claude/hooks/gate-aws-cli.sh`, not to the copy you
 changed in Lab 4. If you see a strange result, check that first.
 
+Parts (b) and (c) need `pyyaml`. If you opened a new terminal since the
+setup, run `source .venv/bin/activate` from the repository root first.
+
 ## a) Run the adversarial suite
 
 1. From the repository root:
