@@ -1,9 +1,10 @@
 FROM node:22-bookworm
 
-# The firewall needs iptables and ipset; dig resolves the allowlist; git and
-# gh are what the agent uses to reach the one remote it is allowed to see.
+# The firewall needs iptables and ipset; dig resolves the allowlist and jq
+# reads GitHub's published ranges; git and gh are what the agent uses to
+# reach the one remote it is allowed to see.
 RUN apt-get update && apt-get install -y --no-install-recommends \
-      iptables ipset dnsutils curl ca-certificates git sudo gh \
+      iptables ipset dnsutils jq curl ca-certificates git sudo gh \
     && rm -rf /var/lib/apt/lists/*
 
 # A non-root user: Claude Code refuses --dangerously-skip-permissions as root.
