@@ -2,7 +2,7 @@
 # Runs the gate suite twice, because a suite that has only ever been seen green
 # proves nothing. The first run is against the real hook and must pass. The
 # second is against a copy with the credential-deny leg cut out, and must FAIL
-# on exactly the two cases that leg exists to catch. A red run that comes back
+# on exactly the three cases that leg exists to catch. A red run that comes back
 # green means the suite is not testing what it claims to test, so this script
 # treats that as the build failure, not as a pass.
 set -uo pipefail
@@ -22,9 +22,9 @@ if ! GATE="$real_gate" bash "$suite"; then
   exit 1
 fi
 
-# Break one leg on purpose. Lines 32-36 of the gate are the credential-read
+# Break one leg on purpose. Lines 34-38 of the gate are the credential-read
 # branch; awk drops that if-block and leaves the rest of the classifier intact,
-# so the two deny cases should now come back as something else.
+# so the three deny cases should now come back as something else.
 broken=$(mktemp -t gate-aws-cli-broken.XXXXXX)
 trap 'rm -f "$broken"' EXIT
 awk '
@@ -57,12 +57,12 @@ if [ "$red_status" -eq 0 ]; then
 fi
 
 denied_cases=$(grep -c "expected deny" <<<"$red_output")
-if [ "$denied_cases" -ne 2 ]; then
+if [ "$denied_cases" -ne 3 ]; then
   echo
-  echo "BUILD FAILURE: expected exactly 2 deny cases to go red, saw $denied_cases." >&2
+  echo "BUILD FAILURE: expected exactly 3 deny cases to go red, saw $denied_cases." >&2
   exit 1
 fi
 
 echo
-echo "both runs behaved: green against the real gate, red on both deny cases"
-echo "against the broken one. The suite has now been observed failing."
+echo "both runs behaved: green against the real gate, red on all three deny"
+echo "cases against the broken one. The suite has now been observed failing."
